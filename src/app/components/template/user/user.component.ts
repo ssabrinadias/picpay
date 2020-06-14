@@ -12,7 +12,6 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
       this.apiService.showUsers().subscribe((data: any[]) => {
-        console.log(data);
         this.users = data;
       }
     );
