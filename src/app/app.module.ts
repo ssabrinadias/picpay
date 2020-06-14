@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './components/template/user/user.component';
@@ -11,10 +12,11 @@ import { ModalConclusionComponent } from './components/template/modal-conclusion
     AppComponent,
     UserComponent,
     ModalBackdropComponent,
-    ModalConclusionComponent
+    ModalConclusionComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
