@@ -1,5 +1,7 @@
-import { Injectable } from '@angular/core';  
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import {User} from '../user/user';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +14,7 @@ export class ApiService {
   constructor(private httpClient: HttpClient) { }
 
   public showUsers() {
-    return this.httpClient.get(this.SERVER_URL);
+    return this.httpClient
+      .get<User[]>(this.SERVER_URL);
   }
 }

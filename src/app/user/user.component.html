@@ -1,9 +1,11 @@
-<div *ngFor="let user of users">
-    <div>{{user.name}}</div>
-    <div>{{user.id}}</div>
-    <div>{{user.username}}</div>
-    <div>{{user.img}}</div>
-</div>
+<li *ngFor="let user of users">
+    {{user.name}}
+    {{user.id}}
+    {{user.username}}
+    {{user.img}}
+</li>
+
+{{users}}
 <!-- <div class="users">
     <div class="user">
       <img src="https://randomuser.me/api/portraits/men/9.jpg" />
