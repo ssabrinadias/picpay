@@ -4,20 +4,22 @@ import { CommonModule } from '@angular/common';
 
 import { UserComponent } from './user.component';
 import { ItemUserComponent } from './components/item-user/item-user.component';
-import { ModalModule } from '../components/modal/modal.module';
+import { PaymentModule } from '../payment/payment.module';
+import { ModalModule } from '../modal/modal.module';
 
 @NgModule({
   imports: [
     HttpClientModule,
     CommonModule,
-    ModalModule
+    ModalModule,
+    PaymentModule
   ],
   declarations: [
     UserComponent,
     ItemUserComponent,
   ],
   exports: [
-    UserComponent
+    UserComponent,
   ],
 })
 export class UserModule { }

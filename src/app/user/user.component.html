@@ -1,34 +1,27 @@
+<!--  USERS payment list -->
 <ul class="users">
-  <button (click)="openModal('custom-modal-1')">Open Modal 2</button>
   <app-item-user *ngFor="let user of users"
     name = "{{user.name}}"
     id = "{{user.id}}"
     username = "{{user.username}}"
     img = "{{user.img}}"
   >
+    <button type="button" class="pay-button" (click)="openModal('pay-modal', user.id);" >
+        Pagar
+    </button>
   </app-item-user>
 </ul>
 
-<app-modal id="custom-modal-1">  
-  <div class="modal-backdrop">
+
+<!-- MODAL payment/conclusion -->
+<app-modal id="pay-modal">  
+  <button (click)="closeModal('pay-modal');">Fechar</button>
     <div class="modal">
-      <div class="title">Pagamento para <span>Nome do Usuário</span></div>
-
+      <div class="title">Pagamento para <span>Nome do {{(userChoice||{}).name}}</span></div>
       <div class="content">
-        <input type="number" placeholder="R$ 0,00" />
-
-        <div class="cards">
-          <select>
-            <option selected>Cartão com final 0123</option>
-          </select>
-        </div>
-
-        <button type="button" class="pay-button">
-          Pagar
-        </button>
+        <app-payment
+          userChoice = "{{userChoice}}"
+        ></app-payment>
       </div>
     </div>
-  </div>
-
-  <button (click)="closeModal('custom-modal-1');">Close</button>
 </app-modal>

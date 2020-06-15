@@ -6,11 +6,11 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./item-user.component.scss']
 })
 export class ItemUserComponent implements OnInit {
-  @Input() name;
-  @Input() url;
-  @Input() img;
-  @Input() username;
-  @Input() id;
+  @Input() name: string;
+  @Input() url: string;
+  @Input() img: string;
+  @Input() username: string;
+  @Input() id: number;
   ngOnInit() {
 
   }

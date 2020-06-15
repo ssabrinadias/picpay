@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { ApiService } from '../services/api.service';
-import { ModalService } from '../components/modal';
+import { ModalService } from '../modal';
 
 @Component({
   selector: 'app-user',
@@ -10,20 +10,26 @@ import { ModalService } from '../components/modal';
 
 export class UserComponent implements OnInit {
   users: any[] = [];
+  userChoice: any;
   constructor(private apiService: ApiService, private modalService: ModalService) { }
 
-  ngOnInit() {
-      return this.apiService.showUsers()
+  ngOnInit(): void {
+    this.apiService.showUsers()
         .subscribe ((data: any[]) => this.users = data,
         err => console.log(err.message)
     );
   }
 
-  openModal(id: string) {
-      this.modalService.open(id);
+  verifyUser(idUser: number): any {
+    return this.users.filter(item => idUser ===  item.id);
   }
 
-  closeModal(id: string) {
+  openModal(id: string, idUser: number): void {
+    this.userChoice = (this.verifyUser(idUser) || []).pop();
+    this.modalService.open(id);
+  }
+
+  closeModal(id: string): void {
       this.modalService.close(id);
   }
 
