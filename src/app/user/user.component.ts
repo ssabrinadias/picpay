@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ApiService } from '../services/api.service';
-import { ModalService } from '../components/modal/modal.service';
+import { ModalService } from '../components/modal';
 
 @Component({
   selector: 'app-user',
@@ -20,11 +20,11 @@ export class UserComponent implements OnInit {
   }
 
   openModal(id: string) {
-      this.modalService.open('1');
+      this.modalService.open(id);
   }
 
   closeModal(id: string) {
-      this.modalService.close('1');
+      this.modalService.close(id);
   }
 
 }
