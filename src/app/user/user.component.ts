@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from '../services/api.service';
+import { ModalService } from '../components/modal';
 
 @Component({
   selector: 'app-user',
@@ -8,13 +9,21 @@ import { ApiService } from '../services/api.service';
 })
 export class UserComponent implements OnInit {
   users = [];
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private modalService: ModalService) { }
 
   ngOnInit() {
-      this.apiService.showUsers()
+      return this.apiService.showUsers()
         .subscribe ((data: any[]) => this.users = data,
         err => console.log(err.message)
     );
+  }
+
+  openModal(id: string) {
+      this.modalService.open(id);
+  }
+
+  closeModal(id: string) {
+      this.modalService.close(id);
   }
 
 }

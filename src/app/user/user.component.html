@@ -1,18 +1,10 @@
 <ul class="users">
-  <li class="user" *ngFor="let user of users">
-      <img src={{user.img}} />
-      <div class="info-wrapper">
-        <div class="user-name">
-          Nome do Usuário {{user.name}}
-        </div>
-  
-        <div class="user-id-username">
-          ID: {{user.id}}- Username: {{user.username}}
-        </div>
-      </div>
-  
-      <button type="button" class="pay-button">
-        Pagar
-      </button>
-  </li>
+  <button (click)="openModal('custom-modal-2')">Open Modal 2</button>
+  <app-item-user *ngFor="let user of users"
+    name = "{{user.name}}"
+    id = "{{user.id}}"
+    username = "{{user.username}}"
+    img = "{{user.img}}"
+  >
+  </app-item-user>
 </ul>
