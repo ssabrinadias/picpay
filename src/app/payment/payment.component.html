@@ -1,14 +1,21 @@
-<form (ngSubmit)="onSubmit(payForm)" #payForm="ngForm">
+<form (ngSubmit)="onSubmit(payForm)"  [formGroup]="payForm">
   <div class="payment">
-    <input type="number" placeholder="R$ 0,00" required />
-    {{submitted}}
+    <input 
+      type="text"
+      currencyMask
+      [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+      placeholder="R$ 0,00"
+      required
+      id="amount"
+      formControlName="amount"
+    />
+    
     <div class="cards">
-      <select>
-        <option selected>Cartão com final 0123</option>
+      <select formControlName="card" required >
+        <option [value]="wallet.token" *ngFor="let wallet of wallets" selected>Cartão com final {{wallet.mask_number}}</option>
       </select>
     </div>
-    
-    <button type="submit" class="pay-button">
+    <button type="submit" [disabled]="!payForm.valid" class="pay-button">
       Pagar
     </button>
   </div>
