@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { FormControl, FormGroup, Validators  } from '@angular/forms';
 
 import { WalletService } from '../services/wallet.service';
 import { PayService } from './_service/pay.service';
 import { TransactionPayload } from '../interfaces/transactionPayload';
+// import { ConditionalExpr } from '@angular/compiler';
 
 @Component({
   selector: 'app-payment',
@@ -16,9 +17,10 @@ export class PaymentComponent implements OnInit {
   submitted = false;
   payForm: FormGroup;
   responsePay: TransactionPayload;
-  conclusion: string;
 
   @Input() userChoice: any;
+  @Input() reciverConclusion: any;
+  @Output() conclusion = new EventEmitter();
 
   constructor(private payService: PayService, private walletService: WalletService) { }
 
@@ -40,7 +42,7 @@ export class PaymentComponent implements OnInit {
       token,
       value,
       destination_user_id
-    }).subscribe ((data: TransactionPayload) => this.conclusion = 'foi');
+    }).subscribe ((data: TransactionPayload) => this.conclusion.emit({status: 'success'}));
   }
 
 }

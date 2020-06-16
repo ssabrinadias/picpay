@@ -11,6 +11,9 @@ import { ModalService } from '../modal';
 export class UserComponent implements OnInit {
   users: any[] = [];
   userChoice: any;
+  conclusion: string;
+  statusConclusion: any = null;
+
   constructor(private apiService: ApiService, private modalService: ModalService) { }
 
   ngOnInit(): void {
@@ -20,17 +23,24 @@ export class UserComponent implements OnInit {
     );
   }
 
+  reciverFeedbackPay(conclusion) {
+    this.statusConclusion = conclusion.status;
+    console.log('Foi emitido o evento e chegou no pai >>>> ', conclusion);
+  }
+
   verifyUser(idUser: number): any {
     return this.users.filter(item => idUser ===  item.id);
   }
 
   openModal(id: string, idUser: number): void {
     this.userChoice = (this.verifyUser(idUser) || []).pop();
+    console.log(this.userChoice);
     this.modalService.open(id);
   }
 
   closeModal(id: string): void {
-      this.modalService.close(id);
+    this.statusConclusion = null;
+    this.modalService.close(id);
   }
 
 }

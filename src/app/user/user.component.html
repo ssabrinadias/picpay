@@ -17,9 +17,19 @@
 <app-modal id="pay-modal">  
   <button (click)="closeModal('pay-modal');">Fechar</button>
     <div class="modal">
-      <div class="title">Pagamento para <span>Nome do {{(userChoice||{}).name}}</span></div>
+      <div class="title">
+        <div *ngIf="!statusConclusion">
+          Pagamento para <span>Nome do {{(userChoice||{}).name}}</span>
+        </div>
+        <div *ngIf="statusConclusion" >
+          Recibo de pagamento
+        </div>
+      </div>
       <div class="content">
         <app-payment
+          *ngIf="!statusConclusion"
+          [reciverConclusion]="statusConclusion"
+          (conclusion)="reciverFeedbackPay($event)"
           userChoice = "{{(userChoice||{}).id}}"
         ></app-payment>
       </div>
