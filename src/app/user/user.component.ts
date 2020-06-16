@@ -25,7 +25,6 @@ export class UserComponent implements OnInit {
 
   reciverFeedbackPay(conclusion) {
     this.statusConclusion = conclusion.status;
-    console.log('Foi emitido o evento e chegou no pai >>>> ', conclusion);
   }
 
   verifyUser(idUser: number): any {
@@ -34,7 +33,6 @@ export class UserComponent implements OnInit {
 
   openModal(id: string, idUser: number): void {
     this.userChoice = (this.verifyUser(idUser) || []).pop();
-    console.log(this.userChoice);
     this.modalService.open(id);
   }
 

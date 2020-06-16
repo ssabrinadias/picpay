@@ -32,6 +32,10 @@
           (conclusion)="reciverFeedbackPay($event)"
           userChoice = "{{(userChoice||{}).id}}"
         ></app-payment>
+        <app-conclusion 
+          *ngIf="statusConclusion"
+          status="{{statusConclusion}}"
+        ></app-conclusion>
       </div>
     </div>
 </app-modal>

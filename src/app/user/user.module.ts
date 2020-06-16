@@ -6,17 +6,19 @@ import { UserComponent } from './user.component';
 import { ItemUserComponent } from './components/item-user/item-user.component';
 import { PaymentModule } from '../payment/payment.module';
 import { ModalModule } from '../modal/modal.module';
+import { ConclusionComponent } from '../components/conclusion/conclusion.component';
 
 @NgModule({
   imports: [
     HttpClientModule,
     CommonModule,
     ModalModule,
-    PaymentModule
+    PaymentModule,
   ],
   declarations: [
     UserComponent,
     ItemUserComponent,
+    ConclusionComponent
   ],
   exports: [
     UserComponent,

@@ -1,0 +1,10 @@
+import { Component, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-conclusion',
+  templateUrl: './conclusion.component.html',
+  styleUrls: ['./conclusion.component.scss']
+})
+export class ConclusionComponent {
+  @Input() status: string;
+}

@@ -5,7 +5,6 @@ import { FormControl, FormGroup, Validators  } from '@angular/forms';
 import { WalletService } from '../services/wallet.service';
 import { PayService } from './_service/pay.service';
 import { TransactionPayload } from '../interfaces/transactionPayload';
-// import { ConditionalExpr } from '@angular/compiler';
 
 @Component({
   selector: 'app-payment',
@@ -37,12 +36,14 @@ export class PaymentComponent implements OnInit {
   }
 
   onSubmit(payForm: NgForm): void {
-    const {value: {value, token, destination_user_id}} =  payForm;
+    const {value: {amount, card, userChoice}} =  payForm;
     this.payService.requestPay({
-      token,
-      value,
-      destination_user_id
-    }).subscribe ((data: TransactionPayload) => this.conclusion.emit({status: 'success'}));
+      token: card,
+      value: amount,
+      destination_user_id : userChoice
+    }).subscribe ((data: TransactionPayload) => this.conclusion.emit({
+      status: card === '9e636fa59376e360cf1a4f246bd1beec' ? 'success' : 'error' // return simulation for error
+    }));
   }
 
 }
