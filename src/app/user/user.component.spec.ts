@@ -3,20 +3,32 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import {HttpClientModule} from '@angular/common/http';
 import { UserComponent } from './user.component';
 import { ApiService } from '../services/api.service';
+import { ModalService } from '../modal';
+import { CommonModule } from '@angular/common';
+import { ModalModule } from '../modal';
+import { PaymentModule } from '../payment/payment.module';
+import { ItemUserComponent } from './components/item-user/item-user.component';
+import { ConclusionComponent } from '../components/conclusion/conclusion.component';
 
 describe('Component: User', () => {
   let component: UserComponent;
   let fixture: ComponentFixture<UserComponent>;
   let service: ApiService;
+  let modalService: ModalService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         declarations: [
-            UserComponent
+            UserComponent,
+            ItemUserComponent,
+            ConclusionComponent
         ],
         imports: [
             HttpClientTestingModule,
-            HttpClientModule
+            HttpClientModule,
+            CommonModule,
+            ModalModule,
+            PaymentModule,
         ],
     })
     .compileComponents();
@@ -35,7 +47,8 @@ describe('Component: User', () => {
 
   beforeEach(() => {
     service = new ApiService(null);
-    component = new UserComponent(service);
+    modalService = new ModalService();
+    component = new UserComponent(service, modalService);
   });
 
 });
