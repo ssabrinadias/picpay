@@ -25,7 +25,7 @@ export class PaymentComponent implements OnInit {
     );
     this.payForm = new FormGroup({
       amount: new FormControl(''),
-      card: new FormControl('', Validators.required),
+      card: new FormControl(this.wallets[0], Validators.required),
     });
   }
 

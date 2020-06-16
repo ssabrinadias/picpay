@@ -12,7 +12,10 @@
     
     <div class="cards">
       <select formControlName="card" required >
-        <option [value]="wallet.token" *ngFor="let wallet of wallets" selected>Cartão com final {{wallet.mask_number}}</option>
+        <option
+          [value]="wallet.token" 
+          *ngFor="let wallet of wallets"
+        > Cartão com final {{wallet.mask_number}}</option>
       </select>
     </div>
     <button type="submit" [disabled]="!payForm.valid" class="pay-button">
