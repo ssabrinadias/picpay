@@ -20,7 +20,7 @@
       <div class="title">Pagamento para <span>Nome do {{(userChoice||{}).name}}</span></div>
       <div class="content">
         <app-payment
-          userChoice = "{{userChoice}}"
+          userChoice = "{{(userChoice||{}).id}}"
         ></app-payment>
       </div>
     </div>

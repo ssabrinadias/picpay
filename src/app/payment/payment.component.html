@@ -1,4 +1,5 @@
-<form (ngSubmit)="onSubmit(payForm)"  [formGroup]="payForm">
+<form *ngIf="!conclusion" (ngSubmit)="onSubmit(payForm)"  [formGroup]="payForm">
+  <input type="hidden" [value] = 'userChoice' formControlName="userChoice"/>
   <div class="payment">
     <input 
       type="text"
