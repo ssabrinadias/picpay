@@ -19,7 +19,7 @@
     <div class="modal">
       <div class="title">
         <div *ngIf="!statusConclusion">
-          Pagamento para <span>Nome do {{(userChoice||{}).name}}</span>
+          Pagamento para <span>{{(userChoice||{}).name}}</span>
         </div>
         <div *ngIf="statusConclusion" >
           Recibo de pagamento
