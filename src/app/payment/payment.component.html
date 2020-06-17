@@ -10,7 +10,9 @@
       id="amount"
       formControlName="amount"
     />
-    
+    <div class= "alert-error" *ngIf="amoutError">
+      valor incorreto
+    </div>
     <div class="cards">
       <select formControlName="card" required >
         <option

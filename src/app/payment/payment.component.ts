@@ -16,6 +16,7 @@ export class PaymentComponent implements OnInit {
   submitted = false;
   payForm: FormGroup;
   responsePay: TransactionPayload;
+  amoutError: boolean;
 
   @Input() userChoice: any;
   @Input() reciverConclusion: any;
@@ -37,6 +38,12 @@ export class PaymentComponent implements OnInit {
 
   onSubmit(payForm: NgForm): void {
     const {value: {amount, card, userChoice}} =  payForm;
+
+    if (!amount) { // todo melhorar validações
+      this.amoutError = true;
+      return;
+    }
+
     this.payService.requestPay({
       token: card,
       value: amount,
